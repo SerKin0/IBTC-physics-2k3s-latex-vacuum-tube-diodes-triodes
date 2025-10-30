@@ -1,3 +1,114 @@
 \section{Практическая часть}
 
-Практическая часть
+\subsection{Исследование лампы диода}
+\subsubsection{Снятие статической характеристики диода}
+\noindent
+\begin{minipage}{0.28\textwidth}
+	\begin{table}[H]
+		\centering
+		\caption{ВАХ диода}
+		\label{tab:1}
+		\begin{tabular}{cc}
+			\toprule
+			\(U_a, \text{ В}\) & \(I_a, \text{ мА}\) \\ \midrule
+			        2          &        3,78         \\
+			        4          &        10,16        \\
+			        6          &        16,88        \\
+			        8          &        24,84        \\
+			        10         &        32,40        \\
+			        12         &        40,90        \\
+			        14         &        49,94        \\
+			        16         &        62,40        \\
+			        18         &        73,52        \\
+			        20         &        86,31        \\ \bottomrule
+		\end{tabular}
+	\end{table}
+\end{minipage}
+\hfill
+\begin{minipage}{0.68\textwidth}
+	\begin{table}[H]
+		\centering
+		\caption{Результаты вычислений погрешностей и крутизны}
+		\label{tab:2}
+		\begin{tabular}{cccc}
+			\toprule
+			\(\Delta U_a, \text{ В}\) & \(\Delta I_a, \text{ мА}\) & \(S, \tfrac{\text{мА}}{\text{В}}\) & \(\Delta S, \tfrac{\text{мА}}{\text{В}}\) \\ \midrule
+			          0,31            &            0,03            &                 --                 &                    --                     \\
+			          0,32            &            0,04            &                3,19                &                   0,71                    \\
+			          0,33            &            0,05            &                3,36                &                   0,77                    \\
+			          0,34            &            0,07            &                3,98                &                   0,94                    \\
+			          0,35            &            0,08            &                3,78                &                   0,92                    \\
+			          0,36            &            0,10            &                4,25                &                   1,07                    \\
+			          0,37            &            0,12            &                4,52                &                   1,17                    \\
+			          0,38            &            0,14            &                6,23                &                   1,65                    \\
+			          0,39            &            0,17            &                5,56                &                   1,52                    \\
+			          0,40            &            0,19            &                6,40                &                   1,79                    \\ \bottomrule
+		\end{tabular}
+	\end{table}
+\end{minipage}\\
+
+В ходе эксперимента снята вольт-амперная характеристика диода. Результаты измерений зависимости анодного тока \(I_a\) от напряжения \(U_a\) представлены в \cref{tab:1}.
+
+Крутизна характеристики \(S\) вычислена по \cref{eq:2} и занесена в \cref{tab:2}. Анализ показывает нелинейный рост крутизны с увеличением напряжения.
+
+Погрешности \(\Delta U_a\) и \(\Delta I_a\) приняты равными приборным и вычислены по \cref{eq:error:1.2,eq:error:2.1}. Погрешность крутизны \(\Delta S\) рассчитана по \cref{eq:error:3.2}.
+
+На \cref{fig:1} представлен график \(I_a(U_a)\) с экспериментальными точками и областями погрешностей. Теоретическая кривая построена по \cref{eq:52}, из которой получен параметр:
+\[g = 0,97~\frac{\text{мА}}{\text{В}^{\frac{3}{2}}}\]
+
+Экспериментальные данные удовлетворительно согласуются с теоретической зависимостью в исследованном диапазоне напряжений.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=12cm,
+			height=10cm,
+			xlabel={$U_a$, В},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=22,
+			ymin=0, ymax=90,
+			grid=both,
+			minor tick num=9, % 4 милимтровых деления между основными
+			minor grid style={gray!20, very thin},
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,2,4,...,22},
+			ytick={0,10,20,...,90},
+			scale only axis
+			]
+			
+			% Данные точек
+			\addplot[only marks, mark=*, mark size=2pt, color=blue] coordinates {
+				(2, 3.78) (4, 10.16) (6, 16.88) (8, 24.84) (10, 32.40)
+				(12, 40.90) (14, 49.94) (16, 62.40) (18, 73.52) (20, 86.31)
+			};
+			
+			\addplot[domain=0:22, samples=100, thick, red]{0.97*x^1.5};
+			
+			% Прямоугольники погрешностей
+			\draw[gray, fill=gray!20, opacity=0.5] (1.69, 3.75) rectangle (2.31, 3.81);
+			\draw[gray, fill=gray!20, opacity=0.5] (3.68, 10.12) rectangle (4.32, 10.20);
+			\draw[gray, fill=gray!20, opacity=0.5] (5.67, 16.83) rectangle (6.33, 16.93);
+			\draw[gray, fill=gray!20, opacity=0.5] (7.66, 24.77) rectangle (8.34, 24.91);
+			\draw[gray, fill=gray!20, opacity=0.5] (9.65, 32.32) rectangle (10.35, 32.48);
+			\draw[gray, fill=gray!20, opacity=0.5] (11.64, 40.80) rectangle (12.36, 41.00);
+			\draw[gray, fill=gray!20, opacity=0.5] (13.63, 49.82) rectangle (14.37, 50.06);
+			\draw[gray, fill=gray!20, opacity=0.5] (15.62, 62.26) rectangle (16.38, 62.54);
+			\draw[gray, fill=gray!20, opacity=0.5] (17.61, 73.35) rectangle (18.39, 73.69);
+			\draw[gray, fill=gray!20, opacity=0.5] (19.60, 86.12) rectangle (20.40, 86.50);
+			
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Вольт-амперная характеристика диода с погрешностями измерений и теоретической линией}
+	\label{fig:1}
+\end{figure}
