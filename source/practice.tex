@@ -58,11 +58,11 @@
 
 Экспериментальные данные удовлетворительно согласуются с теоретической зависимостью в исследованном диапазоне напряжений.
 
-\begin{figure}[H]
+\begin{figure}[p]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
-			width=12cm,
+			width=13cm,
 			height=10cm,
 			xlabel={$U_a$, В},
 			ylabel={$I_a$, мА},
@@ -70,7 +70,7 @@
 			ymin=0, ymax=90,
 			grid=both,
 			minor tick num=9, % 4 милимтровых деления между основными
-			minor grid style={gray!20, very thin},
+			minor grid style={gray!15, very thin},
 			grid style={black!50, thin},
 			major grid style={black!70, thin},
 			major tick length=2pt,
@@ -107,8 +107,72 @@
 			\draw[gray, fill=gray!20, opacity=0.5] (17.61, 73.35) rectangle (18.39, 73.69);
 			\draw[gray, fill=gray!20, opacity=0.5] (19.60, 86.12) rectangle (20.40, 86.50);
 			
-		\end{axis}
+z		\end{axis}
 	\end{tikzpicture}
 	\caption{Вольт-амперная характеристика диода с погрешностями измерений и теоретической линией}
 	\label{fig:1}
 \end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=13cm,
+			height=9cm,
+			xlabel={$U_a$, В},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=240,
+			ymin=0, ymax=250,
+			minor tick num=9, 
+			minor grid style={gray!15, very thin},
+			grid=both,
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,20,40,...,240},
+			ytick={0,20,40,...,250},
+			scale only axis
+			]
+			
+			\addplot[domain=0:240, samples=100, thick, red]{2.5/x*1000};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Кривая максимально допустимого тока}
+	\label{fig:2}
+\end{figure}
+
+\subsection{Исследование лампы триода}
+\subsubsection{Расчет предельной мощности}
+
+В соответствии с максимальной рассеиваемой мощностью лампы рассчитали максимально допустимый ток для напряжений в диапазоне $U_a \in [10...240]~\text{В}$.
+\[P_{max} = U_a \cdot I_a = \mathrm{const} = 2,5~\text{В}\]
+\begin{equation} \label{eq:3}
+	I_a^{max} = \frac{P_{max}}{U_a} = \frac{2,5}{U_a}
+\end{equation}
+
+\begin{table}[H]
+	\centering
+	\caption{Максимальный допустимый ток}
+	\label{tab:3}
+	\begin{tabular}{cccccc}
+		\toprule
+		$U_a$, В & $I_a$, мА & $U_a$, В & $I_a$, мА & $U_a$, В & $I_a$, мА \\
+		\midrule
+		10 & 250,00 & 90 & 27,78 & 170 & 14,71 \\
+		20 & 125,00 & 100 & 25,00 & 180 & 13,89 \\
+		30 & 83,33  & 110 & 22,73 & 190 & 13,16 \\
+		40 & 62,50  & 120 & 20,83 & 200 & 12,50 \\
+		50 & 50,00  & 130 & 19,23 & 210 & 11,90 \\
+		60 & 41,67  & 140 & 17,86 & 220 & 11,36 \\
+		70 & 35,71  & 150 & 16,67 & 230 & 10,87 \\
+		80 & 31,25  & 160 & 15,63 & 240 & 10,42 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
