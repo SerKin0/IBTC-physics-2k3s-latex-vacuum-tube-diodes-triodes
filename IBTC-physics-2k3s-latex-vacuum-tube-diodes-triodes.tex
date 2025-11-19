@@ -8,43 +8,36 @@
 \def\labtheme{Исследование электронных ламп диода и триода}
 \def\shortlabtheme{Диоды и триоды}
 
-\graphicspath{{image/}{graph/}}
-\usepackage{booktabs}
-\usepackage{siunitx}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage{tikz}
+%\addbibresource{BibTeX/references.bib}
+%
 
-\newcommand{\frc}[2]{\raisebox{2pt}{$#1$}\big/\raisebox{-3pt}{$#2$}}
-\newcommand{\tfrc}[2]{\raisebox{2pt}{{\footnotesize $#1$}}/\raisebox{-3pt}{{\footnotesize $#2$}}}
-
-\addbibresource{BibTeX/references.bib}
+\DeclareMathOperator{\Epsilon}{\mathcal{E}}
 
 \begin{document}
 	% Титульный лист
 	\include{source/title.tex}
-
+	
 	% Содержание
 	\include{source/content.tex}
-
+	
 	% Введение
 	\include{source/introduction.tex}
-
+	
 	% Теоритическая часть
 	\include{source/theory.tex}
-
+	
 	% Практическая часть
 	\include{source/practice.tex}
-
+	
 	% Вывод
 	\include{source/conclusion.tex}
-
+	
 	% Вопросы
 	\include{source/questions.tex}
-
+	
 	% Список используемой литературы
 	\include{source/references.tex}
-
+	
 	% Приложение
 	\include{source/appendix.tex}
 \end{document}
