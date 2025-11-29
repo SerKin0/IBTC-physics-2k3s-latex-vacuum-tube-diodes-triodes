@@ -1,0 +1,46 @@
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=15cm,
+			height=10.5cm,
+			xlabel={$U_a$, В},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=240,
+			ymin=0, ymax=250,
+			minor tick num=9, 
+			minor grid style={gray!15, very thin},
+			grid=both,
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,20,40,...,240},
+			ytick={0,20,40,...,250},
+			scale only axis
+			]
+			
+			\addplot[domain=0:240, samples=100, thick, red]{2.5/x*1000};
+			
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

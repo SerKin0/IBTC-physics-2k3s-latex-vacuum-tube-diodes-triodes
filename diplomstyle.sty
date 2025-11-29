@@ -72,8 +72,10 @@
 %% Настройка размеров страницы
 \geometry{
     a4paper,
-    left=2.5cm,    % уменьшено с 3cm
-    right=1.2cm,   % уменьшено с 1.5cm
+    paperheight=297mm,
+    paperwidth=210mm,
+    left=2cm,    % уменьшено с 3cm
+    right=1cm,   % уменьшено с 1.5cm
     top=1.5cm,     % уменьшено с 2cm
     bottom=1.5cm,  % уменьшено с 2cm
     footskip=0.8cm % добавлено для корректного отступа снизу
@@ -231,11 +233,13 @@
 \newcommand{\appendixsection}[1]{
     \refstepcounter{appsection}
     \vspace{0.8em} % уменьшено с 1em
-    \noindent{\large\textbf{Приложение \theappsection. #1}}
+    \noindent{{\large Приложение \theappsection. #1}}
     \par\nopagebreak
     \addcontentsline{toc}{subsection}{Приложение \theappsection. #1}
     \label{app:#1}
 }
+
+\renewcommand{\thesubtable}{\asbuk{subtable}}
 
 %% Настройка перечислений
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}

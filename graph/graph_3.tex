@@ -1,0 +1,126 @@
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=16cm,
+			height=10cm,
+			xlabel={$U_a$, В},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=185,
+			ymin=0, ymax=21,
+			grid=both,
+			minor x tick num=9,
+			minor y tick num=3,
+			minor grid style={gray!50,  thin},
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,20,40,...,180},
+			ytick={0,2,4,...,20},
+			scale only axis
+			]
+			
+			% Данные точек с прямоугольниками погрешностей
+			
+			% Первая серия: U_g = -4В (синие)
+			\addplot[only marks, mark=*, mark size=1pt, color=blue] coordinates {
+				(60.0, 0.12) (70.0, 0.34) (80.0, 0.72) (90.0, 1.26) (100.0, 1.95) (110.0, 2.77) (120.0, 3.72) (130.0, 4.75) (140.0, 5.93) (150.0, 7.15) (160.0, 8.44) (170.0, 9.84) (180.0, 11.27) 
+			};
+			
+			% Прямоугольники погрешностей для первой серии
+			\draw[blue, thin] (60.0-0.6, 0.12-0.02) rectangle (60.0+0.6, 0.12+0.02);
+			\draw[blue, thin] (70.0-0.6, 0.34-0.02) rectangle (70.0+0.6, 0.34+0.02);
+			\draw[blue, thin] (80.0-0.7, 0.72-0.02) rectangle (80.0+0.7, 0.72+0.02);
+			\draw[blue, thin] (90.0-0.7, 1.26-0.02) rectangle (90.0+0.7, 1.26+0.02);
+			\draw[blue, thin] (100.0-0.8, 1.95-0.02) rectangle (100.0+0.8, 1.95+0.02);
+			\draw[blue, thin] (110.0-0.8, 2.77-0.03) rectangle (110.0+0.8, 2.77+0.03);
+			\draw[blue, thin] (120.0-0.9, 3.72-0.03) rectangle (120.0+0.9, 3.72+0.03);
+			\draw[blue, thin] (130.0-0.9, 4.75-0.03) rectangle (130.0+0.9, 4.75+0.03);
+			\draw[blue, thin] (140.0-1.0, 5.93-0.03) rectangle (140.0+1.0, 5.93+0.03);
+			\draw[blue, thin] (150.0-1.0, 7.15-0.03) rectangle (150.0+1.0, 7.15+0.03);
+			\draw[blue, thin] (160.0-1.1, 8.44-0.04) rectangle (160.0+1.1, 8.44+0.04);
+			\draw[blue, thin] (170.0-1.1, 9.84-0.04) rectangle (170.0+1.1, 9.84+0.04);
+			\draw[blue, thin] (180.0-1.2, 11.27-0.04) rectangle (180.0+1.2, 11.27+0.04);
+			
+			% Вторая серия: U_g = -2В (красные)
+			\addplot[only marks, mark=*, mark size=1pt, color=red] coordinates {
+				(30.0, 0.16) (40.0, 0.54) (50.0, 1.13) (60.0, 1.9) (70.0, 2.81) (80.0, 3.82) (90.0, 4.92) (100.0, 6.18) (110.0, 7.46) (120.0, 8.77) (130.0, 10.16) (140.0, 11.65) 
+			};
+			
+			% Прямоугольники погрешностей для второй серии
+			\draw[red, thin] (30.0-0.4, 0.16-0.02) rectangle (30.0+0.4, 0.16+0.02);
+			\draw[red, thin] (40.0-0.5, 0.54-0.02) rectangle (40.0+0.5, 0.54+0.02);
+			\draw[red, thin] (50.0-0.5, 1.13-0.02) rectangle (50.0+0.5, 1.13+0.02);
+			\draw[red, thin] (60.0-0.6, 1.90-0.02) rectangle (60.0+0.6, 1.90+0.02);
+			\draw[red, thin] (70.0-0.6, 2.81-0.03) rectangle (70.0+0.6, 2.81+0.03);
+			\draw[red, thin] (80.0-0.7, 3.82-0.03) rectangle (80.0+0.7, 3.82+0.03);
+			\draw[red, thin] (90.0-0.7, 4.92-0.03) rectangle (90.0+0.7, 4.92+0.03);
+			\draw[red, thin] (100.0-0.8, 6.18-0.03) rectangle (100.0+0.8, 6.18+0.03);
+			\draw[red, thin] (110.0-0.8, 7.46-0.03) rectangle (110.0+0.8, 7.46+0.03);
+			\draw[red, thin] (120.0-0.9, 8.77-0.04) rectangle (120.0+0.9, 8.77+0.04);
+			\draw[red, thin] (130.0-0.9, 10.16-0.04) rectangle (130.0+0.9, 10.16+0.04);
+			\draw[red, thin] (140.0-1.0, 11.65-0.04) rectangle (140.0+1.0, 11.65+0.04);
+			
+			% Третья серия: U_g = 0В (черные)
+			\addplot[only marks, mark=*, mark size=1pt, color=black] coordinates {
+				(0.0, 0.14) (10.0, 1.39) (20.0, 2.35) (30.0, 3.39) (40.0, 4.5) (50.0, 5.77) (60.0, 6.97) (70.0, 8.33) (80.0, 9.72) (90.0, 11.19) (100.0, 12.73) (110.0, 14.32) (120.0, 15.45) (130.0, 17.6) 
+			};
+			
+			% Прямоугольники погрешностей для третьей серии
+			\draw[black, thin] (0.0-0.3, 0.14-0.02) rectangle (0.0+0.3, 0.14+0.02);
+			\draw[black, thin] (10.0-0.3, 1.39-0.02) rectangle (10.0+0.3, 1.39+0.02);
+			\draw[black, thin] (20.0-0.4, 2.35-0.02) rectangle (20.0+0.4, 2.35+0.02);
+			\draw[black, thin] (30.0-0.4, 3.39-0.03) rectangle (30.0+0.4, 3.39+0.03);
+			\draw[black, thin] (40.0-0.5, 4.50-0.03) rectangle (40.0+0.5, 4.50+0.03);
+			\draw[black, thin] (50.0-0.5, 5.77-0.03) rectangle (50.0+0.5, 5.77+0.03);
+			\draw[black, thin] (60.0-0.6, 6.97-0.03) rectangle (60.0+0.6, 6.97+0.03);
+			\draw[black, thin] (70.0-0.6, 8.33-0.04) rectangle (70.0+0.6, 8.33+0.04);
+			\draw[black, thin] (80.0-0.7, 9.72-0.04) rectangle (80.0+0.7, 9.72+0.04);
+			\draw[black, thin] (90.0-0.7, 11.19-0.04) rectangle (90.0+0.7, 11.19+0.04);
+			\draw[black, thin] (100.0-0.8, 12.73-0.05) rectangle (100.0+0.8, 12.73+0.05);
+			\draw[black, thin] (110.0-0.8, 14.32-0.05) rectangle (110.0+0.8, 14.32+0.05);
+			\draw[black, thin] (120.0-0.9, 15.45-0.05) rectangle (120.0+0.9, 15.45+0.05);
+			\draw[black, thin] (130.0-0.9, 17.60-0.06) rectangle (130.0+0.9, 17.60+0.06);
+			
+			% Четвертая серия: U_g = 2В (оранжевые)
+			\addplot[only marks, mark=*, mark size=1pt, color=orange] coordinates {
+				(0.0, 0.13) (10.0, 4.67) (20.0, 6.01) (30.0, 7.5) (40.0, 8.97) (50.0, 10.47) (60.0, 12.0) (70.0, 13.59) (80.0, 15.2) (90.0, 16.88) (100.0, 18.57) (110.0, 20.31)  
+			};
+			
+			% Прямоугольники погрешностей для четвертой серии
+			\draw[orange, thin] (0.0-0.3, 0.13-0.03) rectangle (0.0+0.3, 0.13+0.03);
+			\draw[orange, thin] (10.0-0.3, 4.67-0.03) rectangle (10.0+0.3, 4.67+0.03);
+			\draw[orange, thin] (20.0-0.4, 6.01-0.03) rectangle (20.0+0.4, 6.01+0.03);
+			\draw[orange, thin] (30.0-0.4, 7.50-0.04) rectangle (30.0+0.4, 7.50+0.04);
+			\draw[orange, thin] (40.0-0.5, 8.97-0.04) rectangle (40.0+0.5, 8.97+0.04);
+			\draw[orange, thin] (50.0-0.5, 10.47-0.04) rectangle (50.0+0.5, 10.47+0.04);
+			\draw[orange, thin] (60.0-0.6, 12.00-0.04) rectangle (60.0+0.6, 12.00+0.04);
+			\draw[orange, thin] (70.0-0.6, 13.59-0.05) rectangle (70.0+0.6, 13.59+0.05);
+			\draw[orange, thin] (80.0-0.7, 15.20-0.05) rectangle (80.0+0.7, 15.20+0.05);
+			\draw[orange, thin] (90.0-0.7, 16.88-0.05) rectangle (90.0+0.7, 16.88+0.05);
+			\draw[orange, thin] (100.0-0.8, 18.57-0.06) rectangle (100.0+0.8, 18.57+0.06);
+			\draw[orange, thin] (110.0-0.8, 20.31-0.06) rectangle (110.0+0.8, 20.31+0.06);
+			
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

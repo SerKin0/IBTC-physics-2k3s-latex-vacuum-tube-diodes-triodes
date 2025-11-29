@@ -1,0 +1,73 @@
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=13cm,
+			height=10.5cm,
+			xlabel={$U_a^{3/2}$, В$^{3/2}$},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=95,
+			ymin=0, ymax=90,
+			grid=both,
+			minor tick num=9,
+			minor grid style={gray!15, very thin},
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,10,20,...,100},
+			ytick={0,10,20,...,90},
+			scale only axis
+			]
+			
+			% Данные точек в координатах (U_a^{3/2}, I_a)
+			\addplot[only marks, mark=*, mark size=2pt, color=blue] coordinates {
+				(2.828, 3.78) 
+				(8, 10.16) 
+				(14.697, 16.88) 
+				(22.627, 24.84) 
+				(31.623, 32.40)
+				(41.569, 40.90) 
+				(52.383, 49.94) 
+				(64, 62.40) 
+				(76.368, 73.52) 
+				(89.443, 86.31)
+			};
+			
+			% Теоретическая кривая I_a = 0.97 * U_a^{3/2}
+			\addplot[domain=0:90, samples=100, thick, red]{0.97*x};
+			
+			% Прямоугольники погрешностей в новых координатах
+			\draw[gray, fill=gray!20, opacity=0.5] (2.36, 3.75) rectangle (3.30, 3.81);
+			\draw[gray, fill=gray!20, opacity=0.5] (7.09, 10.12) rectangle (8.91, 10.20);
+			\draw[gray, fill=gray!20, opacity=0.5] (13.50, 16.83) rectangle (15.89, 16.93);
+			\draw[gray, fill=gray!20, opacity=0.5] (21.19, 24.77) rectangle (24.07, 24.91);
+			\draw[gray, fill=gray!20, opacity=0.5] (29.72, 32.32) rectangle (33.53, 32.48);
+			\draw[gray, fill=gray!20, opacity=0.5] (39.69, 40.80) rectangle (43.45, 41.00);
+			\draw[gray, fill=gray!20, opacity=0.5] (50.36, 49.82) rectangle (54.41, 50.06);
+			\draw[gray, fill=gray!20, opacity=0.5] (61.74, 62.26) rectangle (66.26, 62.54);
+			\draw[gray, fill=gray!20, opacity=0.5] (73.81, 73.35) rectangle (78.93, 73.69);
+			\draw[gray, fill=gray!20, opacity=0.5] (86.58, 86.12) rectangle (92.31, 86.50);
+			
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

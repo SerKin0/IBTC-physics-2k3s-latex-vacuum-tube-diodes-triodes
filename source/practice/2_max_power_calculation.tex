@@ -1,0 +1,33 @@
+\subsubsection{Расчет предельной мощности}
+
+В соответствии с максимальной рассеиваемой мощностью лампы рассчитали максимально допустимый ток для $U_a \in [10:240]~\text{В}$. Построим график гиперболы (\Cref{fig:2}).
+\[P_{max} = U_a  I_a = \mathrm{const} = 2,5~\text{Вт}\]
+\begin{equation} \label{eq:3}
+	I_a^{max} = \frac{P_{max}}{U_a} = \frac{2,5}{U_a}~\text{А}
+\end{equation}
+
+\begin{table}[H]
+	\centering
+	\caption{Максимальный допустимый ток}
+	\label{tab:max_current}
+	\begin{tabular}{cccccccc}
+		\toprule
+		{$U_a$, В} & {$I_a$, мА} & {$U_a$, В} & {$I_a$, мА} & 
+		{$U_a$, В} & {$I_a$, мА} & {$U_a$, В} & {$I_a$, мА} \\
+		\midrule
+		10 & 250,00 &  70 &  35,71 & 130 &  19,23 & 190 &  13,16 \\
+		20 & 125,00 &  80 &  31,25 & 140 &  17,86 & 200 &  12,50 \\
+		30 &  83,33 &  90 &  27,78 & 150 &  16,67 & 210 &  11,90 \\
+		40 &  62,50 & 100 &  25,00 & 160 &  15,63 & 220 &  11,36 \\
+		50 &  50,00 & 110 &  22,73 & 170 &  14,71 & 230 &  10,87 \\
+		60 &  41,67 & 120 &  20,83 & 180 &  13,89 & 240 &  10,42 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=0.45\textheight]{graph/graph_2}
+	\caption{Кривая максимально допустимого тока}
+	\label{fig:2}
+\end{figure}

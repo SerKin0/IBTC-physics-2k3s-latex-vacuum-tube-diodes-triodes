@@ -1,0 +1,64 @@
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=14cm,
+			height=10cm,
+			xlabel={$U_a$, В},
+			ylabel={$I_a$, мА},
+			xmin=0, xmax=22,
+			ymin=0, ymax=90,
+			grid=both,
+			minor tick num=9, % 4 милимтровых деления между основными
+			minor grid style={gray!15, very thin},
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,2,4,...,22},
+			ytick={0,10,20,...,90},
+			scale only axis
+			]
+			
+			% Данные точек
+			\addplot[only marks, mark=*, mark size=2pt, color=blue] coordinates {
+				(2, 3.78) (4, 10.16) (6, 16.88) (8, 24.84) (10, 32.40)
+				(12, 40.90) (14, 49.94) (16, 62.40) (18, 73.52) (20, 86.31)
+			};
+			
+			\addplot[domain=0:22, samples=100, thick, red]{0.97*x^1.5};
+			
+			% Прямоугольники погрешностей
+			\draw[gray, fill=gray!20, opacity=0.5] (1.69, 3.75) rectangle (2.31, 3.81);
+			\draw[gray, fill=gray!20, opacity=0.5] (3.68, 10.12) rectangle (4.32, 10.20);
+			\draw[gray, fill=gray!20, opacity=0.5] (5.67, 16.83) rectangle (6.33, 16.93);
+			\draw[gray, fill=gray!20, opacity=0.5] (7.66, 24.77) rectangle (8.34, 24.91);
+			\draw[gray, fill=gray!20, opacity=0.5] (9.65, 32.32) rectangle (10.35, 32.48);
+			\draw[gray, fill=gray!20, opacity=0.5] (11.64, 40.80) rectangle (12.36, 41.00);
+			\draw[gray, fill=gray!20, opacity=0.5] (13.63, 49.82) rectangle (14.37, 50.06);
+			\draw[gray, fill=gray!20, opacity=0.5] (15.62, 62.26) rectangle (16.38, 62.54);
+			\draw[gray, fill=gray!20, opacity=0.5] (17.61, 73.35) rectangle (18.39, 73.69);
+			\draw[gray, fill=gray!20, opacity=0.5] (19.60, 86.12) rectangle (20.40, 86.50);
+			
+			z		\end{axis}
+	\end{tikzpicture}
+\end{document}
