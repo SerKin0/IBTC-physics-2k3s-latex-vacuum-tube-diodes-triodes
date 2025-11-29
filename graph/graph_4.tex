@@ -19,9 +19,9 @@
 				xlabel={$U_c$, В},
 				ylabel={$I_a$, мА},
 				xmin=-6, xmax=6,
-				ymin=-0.5, ymax=25,
+				ymin=-5, ymax=25,
 				minor tick num=9, 
-				minor grid style={gray!15, very thin},
+				minor grid style={gray!85, very thin},
 				grid=both,
 				grid style={black!50, thin},
 				major grid style={black!70, thin},
@@ -34,10 +34,10 @@
 				xminorgrids=true,
 				yminorgrids=true,
 				xtick={-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6},
-				ytick={0,5,10,15,20,25},
+				ytick={-5,0,5,10,15,20,25},
 				scale only axis,
 				]
-				\draw[->,thick, line cap=round] (0,-0.5) -- (0,25) node[below right] { };
+				\draw[->,thick] (0,-0.5) -- (0,25) node[below right] { };
 				\draw[->,thick] (-6,0) -- (6,0) node[above left] { };
 				
 				% Рисуем оси со стрелками вручную
