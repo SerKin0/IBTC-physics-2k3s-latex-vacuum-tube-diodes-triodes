@@ -1,0 +1,69 @@
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=16cm,
+			height=10cm,
+			xlabel={$\nu$, кГц},
+			ylabel={$K$},
+			xmin=0, xmax=950,
+			ymin=0, ymax=18,
+			grid=both,
+			minor x tick num=5,
+			minor y tick num=5,
+			minor grid style={gray!85,  thin},
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=left,
+			axis line style={-stealth, thick, black},
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={0,50,...,950},
+			ytick={0,2,4,...,20},
+			scale only axis
+			]
+			
+			% Данные точек с прямоугольниками погрешностей
+			
+			% Первая серия: U_g = -4В (синие)
+			\addplot[only marks, mark=*, mark size=1pt, color=blue] coordinates {
+				(1, 16.2) (20, 15.7) (40, 14.2) (50, 13.2) (70, 11.7) (90, 10.0) (120, 8.0) (140, 7.0) (180, 6.0) (230, 4.2) (270, 4.4) (500, 2.2) (600, 1.4) (700, 1.8) (800, 1.4) (900, 1.0)  
+			};
+			
+			\draw[blue, thin] (0.68, 16.18) rectangle (1.32, 16.22);
+			\draw[blue, thin] (19.3, 15.65) rectangle (20.7, 15.75);
+			\draw[blue, thin] (38.9, 14.15) rectangle (41.1, 14.25);
+			\draw[blue, thin] (48.7, 13.0) rectangle (51.3, 13.4);
+			\draw[blue, thin] (68.3, 11.6) rectangle (71.7, 11.8);
+			\draw[blue, thin] (87.9, 9.8) rectangle (92.1, 10.2);
+			\draw[blue, thin] (114.6, 7.5) rectangle (125.4, 8.5);
+			\draw[blue, thin] (134.2, 6.5) rectangle (145.8, 7.5);
+			\draw[blue, thin] (173.4, 5.5) rectangle (186.6, 6.5);
+			\draw[blue, thin] (222.4, 3.2) rectangle (237.6, 5.2);
+			\draw[blue, thin] (263.6, 3.9) rectangle (276.4, 4.9);
+			\draw[blue, thin] (487.0, 1.7) rectangle (513.0, 2.7);
+			\draw[blue, thin] (585.0, 0.9) rectangle (615.0, 1.9);
+			\draw[blue, thin] (683.0, 1.3) rectangle (717.0, 2.3);
+			\draw[blue, thin] (781.0, 0.9) rectangle (819.0, 1.9);
+			\draw[blue, thin] (879.0, 0.5) rectangle (921.0, 1.5);
+			
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

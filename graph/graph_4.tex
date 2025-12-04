@@ -1,115 +1,172 @@
-	\documentclass{standalone}
-	
-	\usepackage[T2A]{fontenc}
-	\usepackage[utf8]{inputenc}
-	\usepackage[russian]{babel}
-	\usepackage{amsmath}
-	\usepackage{amsfonts}
-	\usepackage{amssymb}
-	
-	\usepackage{pgfplots}
-	\pgfplotsset{compat=1.18}
-	\usepackage{tikz}
-	
-	\begin{document}
-		\begin{tikzpicture}
-			\begin{axis}[
-				width=15cm,
-				height=10.5cm,
-				xlabel={$U_c$, В},
-				ylabel={$I_a$, мА},
-				xmin=-6, xmax=6,
-				ymin=-5, ymax=25,
-				minor tick num=9, 
-				minor grid style={gray!85, very thin},
-				grid=both,
-				grid style={black!50, thin},
-				major grid style={black!70, thin},
-				major tick length=2pt,
-				minor tick length=1pt,
-				axis lines=box,
-				tick style={black, thick},
-				xmajorgrids=true,
-				ymajorgrids=true,
-				xminorgrids=true,
-				yminorgrids=true,
-				xtick={-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6},
-				ytick={-5,0,5,10,15,20,25},
-				scale only axis,
-				]
-				\draw[->,thick] (0,-5) -- (0,25) node[below right] { };
-				\draw[->,thick] (-6,0) -- (6,0) node[above left] { };
-				
-				% Рисуем оси со стрелками вручную
-	%			\draw[-stealth, thick] (axis cs:-6,0) -- (axis cs:6.5,0) node[below] {};
-	%			\draw[-stealth, thick] (axis cs:0,0) -- (axis cs:0,26) node[left] {};
-				
-				% Данные для Ua = 60 В
-				\addplot[only marks, mark=*, mark size=1.5pt, blue] coordinates {
-					(-3.16, 0.50)
-					(-2.38, 1.31)
-					(-2.04, 1.85)
-					(-1.54, 2.78)
-					(-1.09, 3.76)
-					(-0.55, 5.16)
-					(0.08, 6.80)
-					(0.52, 7.90)
-					(1.02, 9.16)
-					(1.57, 10.60)
-					(2.04, 11.85)
-					(2.54, 13.21)
-					(3.04, 14.62)
-					(3.57, 16.15)
-					(4.08, 17.70)
-					(4.47, 18.90)
-				};
-				
-				% Данные для Ua = 80 В
-				\addplot[only marks, mark=*, mark size=1.5pt, red] coordinates {
-					(-4.53, 0.37)
-					(-4.00, 0.73)
-					(-3.52, 1.20)
-					(-3.08, 1.78)
-					(-2.50, 2.78)
-					(-2.00, 3.80)
-					(-1.54, 4.96)
-					(-0.95, 6.40)
-					(-0.57, 7.60)
-					(0.06, 9.50)
-					(0.52, 10.78)
-					(0.98, 12.12)
-					(1.50, 13.49)
-					(2.13, 15.34)
-					(2.53, 16.52)
-					(2.99, 17.92)
-					(3.50, 19.51)
-					(4.02, 21.17)
-					(4.51, 22.75)
-				};
-				
-				% Данные для Ua = 100 В
-				\addplot[only marks, mark=*, mark size=1.5pt, green!70!black] coordinates {
-					(-5.55, 0.53)
-					(-4.97, 0.87)
-					(-4.54, 1.28)
-					(-4.03, 1.92)
-					(-3.50, 2.78)
-					(-3.10, 3.55)
-					(-2.53, 4.78)
-					(-2.04, 6.09)
-					(-1.50, 7.56)
-					(-1.05, 8.90)
-					(-0.55, 10.48)
-					(0.11, 12.62)
-					(0.51, 13.85)
-					(1.07, 15.54)
-					(1.48, 16.77)
-					(2.09, 18.66)
-					(2.55, 20.13)
-					(3.07, 21.83)
-					(3.52, 23.26)
-				};
-				
-			\end{axis}
-		\end{tikzpicture}
-	\end{document}
+\documentclass{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=15cm,
+			height=10.5cm,
+			xlabel={$U_c$, В},
+			ylabel={$I_a$, мА},
+			xmin=-6, xmax=6,
+			ymin=-5, ymax=25,
+			minor tick num=9, 
+			minor grid style={gray!85, very thin},
+			grid=both,
+			grid style={black!50, thin},
+			major grid style={black!70, thin},
+			major tick length=2pt,
+			minor tick length=1pt,
+			axis lines=box,
+			tick style={black, thick},
+			xmajorgrids=true,
+			ymajorgrids=true,
+			xminorgrids=true,
+			yminorgrids=true,
+			xtick={-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6},
+			ytick={-5,0,5,10,15,20,25},
+			scale only axis,
+			]
+			
+			\draw[->,thick] (0,-5) -- (0,25) node[below right] { };
+			\draw[->,thick] (-6,0) -- (6,0) node[above left] { };
+			
+			% Прямоугольники погрешностей для Ua = 60 В (синие) - БОЛЕЕ ТЕМНЫЕ
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-3.16-0.29, 0.50-0.02) rectangle (axis cs:-3.16+0.29, 0.50+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-2.38-0.29, 1.31-0.02) rectangle (axis cs:-2.38+0.29, 1.31+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-2.04-0.29, 1.85-0.02) rectangle (axis cs:-2.04+0.29, 1.85+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-1.54-0.29, 2.78-0.02) rectangle (axis cs:-1.54+0.29, 2.78+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-1.09-0.29, 3.76-0.02) rectangle (axis cs:-1.09+0.29, 3.76+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:-0.55-0.29, 5.16-0.02) rectangle (axis cs:-0.55+0.29, 5.16+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:0.08-0.30, 6.80-0.02) rectangle (axis cs:0.08+0.30, 6.80+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:0.52-0.30, 7.90-0.02) rectangle (axis cs:0.52+0.30, 7.90+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:1.02-0.30, 9.16-0.02) rectangle (axis cs:1.02+0.30, 9.16+0.02);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:1.57-0.30, 10.60-0.03) rectangle (axis cs:1.57+0.30, 10.60+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:2.04-0.30, 11.85-0.03) rectangle (axis cs:2.04+0.30, 11.85+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:2.54-0.30, 13.21-0.03) rectangle (axis cs:2.54+0.30, 13.21+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:3.04-0.30, 14.62-0.03) rectangle (axis cs:3.04+0.30, 14.62+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:3.57-0.30, 16.15-0.03) rectangle (axis cs:3.57+0.30, 16.15+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:4.08-0.31, 17.70-0.03) rectangle (axis cs:4.08+0.31, 17.70+0.03);
+			\draw[blue!60, fill=blue!30, opacity=0.8, line width=0.4pt] (axis cs:4.47-0.31, 18.90-0.03) rectangle (axis cs:4.47+0.31, 18.90+0.03);
+			
+			% Прямоугольники погрешностей для Ua = 80 В (красные) - БОЛЕЕ ТЕМНЫЕ
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-4.53-0.29, 0.37-0.02) rectangle (axis cs:-4.53+0.29, 0.37+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-4.00-0.29, 0.73-0.02) rectangle (axis cs:-4.00+0.29, 0.73+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-3.52-0.29, 1.20-0.02) rectangle (axis cs:-3.52+0.29, 1.20+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-3.08-0.29, 1.78-0.02) rectangle (axis cs:-3.08+0.29, 1.78+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-2.50-0.29, 2.78-0.02) rectangle (axis cs:-2.50+0.29, 2.78+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-2.00-0.29, 3.80-0.02) rectangle (axis cs:-2.00+0.29, 3.80+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-1.54-0.29, 4.96-0.02) rectangle (axis cs:-1.54+0.29, 4.96+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-0.95-0.29, 6.40-0.02) rectangle (axis cs:-0.95+0.29, 6.40+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:-0.57-0.29, 7.60-0.02) rectangle (axis cs:-0.57+0.29, 7.60+0.02);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:0.06-0.30, 9.50-0.03) rectangle (axis cs:0.06+0.30, 9.50+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:0.52-0.30, 10.78-0.03) rectangle (axis cs:0.52+0.30, 10.78+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:0.98-0.30, 12.12-0.03) rectangle (axis cs:0.98+0.30, 12.12+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:1.50-0.30, 13.49-0.03) rectangle (axis cs:1.50+0.30, 13.49+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:2.13-0.30, 15.34-0.03) rectangle (axis cs:2.13+0.30, 15.34+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:2.53-0.30, 16.52-0.03) rectangle (axis cs:2.53+0.30, 16.52+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:2.99-0.30, 17.92-0.03) rectangle (axis cs:2.99+0.30, 17.92+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:3.50-0.31, 19.51-0.03) rectangle (axis cs:3.50+0.31, 19.51+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:4.02-0.31, 21.17-0.03) rectangle (axis cs:4.02+0.31, 21.17+0.03);
+			\draw[red!60, fill=red!30, opacity=0.8, line width=0.4pt] (axis cs:4.51-0.31, 22.75-0.03) rectangle (axis cs:4.51+0.31, 22.75+0.03);
+			
+			% Прямоугольники погрешностей для Ua = 100 В (зелёные) - БОЛЕЕ ТЕМНЫЕ
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-5.55-0.29, 0.53-0.02) rectangle (axis cs:-5.55+0.29, 0.53+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-4.97-0.29, 0.87-0.02) rectangle (axis cs:-4.97+0.29, 0.87+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-4.54-0.29, 1.28-0.02) rectangle (axis cs:-4.54+0.29, 1.28+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-4.03-0.29, 1.92-0.02) rectangle (axis cs:-4.03+0.29, 1.92+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-3.50-0.29, 2.78-0.02) rectangle (axis cs:-3.50+0.29, 2.78+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-3.10-0.29, 3.55-0.02) rectangle (axis cs:-3.10+0.29, 3.55+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-2.53-0.29, 4.78-0.02) rectangle (axis cs:-2.53+0.29, 4.78+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-2.04-0.29, 6.09-0.02) rectangle (axis cs:-2.04+0.29, 6.09+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-1.50-0.29, 7.56-0.02) rectangle (axis cs:-1.50+0.29, 7.56+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-1.05-0.29, 8.90-0.02) rectangle (axis cs:-1.05+0.29, 8.90+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:-0.55-0.29, 10.48-0.02) rectangle (axis cs:-0.55+0.29, 10.48+0.02);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:0.11-0.30, 12.62-0.03) rectangle (axis cs:0.11+0.30, 12.62+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:0.51-0.30, 13.85-0.03) rectangle (axis cs:0.51+0.30, 13.85+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:1.07-0.30, 15.54-0.03) rectangle (axis cs:1.07+0.30, 15.54+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:1.48-0.30, 16.77-0.03) rectangle (axis cs:1.48+0.30, 16.77+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:2.09-0.30, 18.66-0.03) rectangle (axis cs:2.09+0.30, 18.66+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:2.55-0.30, 20.13-0.03) rectangle (axis cs:2.55+0.30, 20.13+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:3.07-0.30, 21.83-0.03) rectangle (axis cs:3.07+0.30, 21.83+0.03);
+			\draw[green!70!black!70, fill=green!50!black!30, opacity=0.8, line width=0.4pt] (axis cs:3.52-0.31, 23.26-0.03) rectangle (axis cs:3.52+0.31, 23.26+0.03);
+			
+			% Данные для Ua = 60 В (поверх прямоугольников)
+			\addplot[only marks, mark=*, mark size=1.8pt, blue] coordinates {
+				(-3.16, 0.50)
+				(-2.38, 1.31)
+				(-2.04, 1.85)
+				(-1.54, 2.78)
+				(-1.09, 3.76)
+				(-0.55, 5.16)
+				(0.08, 6.80)
+				(0.52, 7.90)
+				(1.02, 9.16)
+				(1.57, 10.60)
+				(2.04, 11.85)
+				(2.54, 13.21)
+				(3.04, 14.62)
+				(3.57, 16.15)
+				(4.08, 17.70)
+				(4.47, 18.90)
+			};
+			
+			% Данные для Ua = 80 В (поверх прямоугольников)
+			\addplot[only marks, mark=*, mark size=1.8pt, red] coordinates {
+				(-4.53, 0.37)
+				(-4.00, 0.73)
+				(-3.52, 1.20)
+				(-3.08, 1.78)
+				(-2.50, 2.78)
+				(-2.00, 3.80)
+				(-1.54, 4.96)
+				(-0.95, 6.40)
+				(-0.57, 7.60)
+				(0.06, 9.50)
+				(0.52, 10.78)
+				(0.98, 12.12)
+				(1.50, 13.49)
+				(2.13, 15.34)
+				(2.53, 16.52)
+				(2.99, 17.92)
+				(3.50, 19.51)
+				(4.02, 21.17)
+				(4.51, 22.75)
+			};
+			
+			% Данные для Ua = 100 В (поверх прямоугольников)
+			\addplot[only marks, mark=*, mark size=1.8pt, green!70!black] coordinates {
+				(-5.55, 0.53)
+				(-4.97, 0.87)
+				(-4.54, 1.28)
+				(-4.03, 1.92)
+				(-3.50, 2.78)
+				(-3.10, 3.55)
+				(-2.53, 4.78)
+				(-2.04, 6.09)
+				(-1.50, 7.56)
+				(-1.05, 8.90)
+				(-0.55, 10.48)
+				(0.11, 12.62)
+				(0.51, 13.85)
+				(1.07, 15.54)
+				(1.48, 16.77)
+				(2.09, 18.66)
+				(2.55, 20.13)
+				(3.07, 21.83)
+				(3.52, 23.26)
+			};
+			
+		\end{axis}
+	\end{tikzpicture}
+\end{document}
