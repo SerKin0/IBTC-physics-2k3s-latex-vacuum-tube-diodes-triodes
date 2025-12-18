@@ -44,8 +44,10 @@
 				(2, 3.78) (4, 10.16) (6, 16.88) (8, 24.84) (10, 32.40)
 				(12, 40.90) (14, 49.94) (16, 62.40) (18, 73.52) (20, 86.31)
 			};
-			
-			\addplot[domain=0:22, samples=100, thick, red]{0.97*x^1.5};
+			% Теория со сдвигом
+			\addplot[domain=0:22, samples=100, thick, red]{(0.97 * x + 0.5)^1.5};
+			% Теория без сдвига
+			\addplot[domain=0:22, samples=50, thick, blue, dashed]{(0.97 * x)^1.5};
 			
 			% Прямоугольники погрешностей
 			\draw[gray, fill=gray!20, opacity=0.5] (1.69, 3.75) rectangle (2.31, 3.81);
@@ -54,10 +56,10 @@
 			\draw[gray, fill=gray!20, opacity=0.5] (7.66, 24.77) rectangle (8.34, 24.91);
 			\draw[gray, fill=gray!20, opacity=0.5] (9.65, 32.32) rectangle (10.35, 32.48);
 			\draw[gray, fill=gray!20, opacity=0.5] (11.64, 40.80) rectangle (12.36, 41.00);
-			\draw[gray, fill=gray!20, opacity=0.5] (13.63, 49.82) rectangle (14.37, 50.06);
+			\draw[gray, fill=gray!20, opacity=0.5] (13.45, 49.82) rectangle (14.55, 50.06);
 			\draw[gray, fill=gray!20, opacity=0.5] (15.62, 62.26) rectangle (16.38, 62.54);
-			\draw[gray, fill=gray!20, opacity=0.5] (17.61, 73.35) rectangle (18.39, 73.69);
-			\draw[gray, fill=gray!20, opacity=0.5] (19.60, 86.12) rectangle (20.40, 86.50);
+			\draw[gray, fill=gray!20, opacity=0.5] (17.55, 73.35) rectangle (18.45, 73.69);
+			\draw[gray, fill=gray!20, opacity=0.5] (19.50, 86.12) rectangle (20.50, 86.50);
 			
 			z		\end{axis}
 	\end{tikzpicture}

@@ -54,7 +54,7 @@
 			};
 			
 			% Теоретическая кривая I_a = 0.97 * U_a^{3/2}
-			\addplot[domain=0:90, samples=100, thick, red]{0.97*x};
+			\addplot[domain=0:90, samples=100, thick, red]{0.97*(x) + 0.62};
 			
 			% Прямоугольники погрешностей в новых координатах
 			\draw[gray, fill=gray!20, opacity=0.5] (2.36, 3.75) rectangle (3.30, 3.81);
